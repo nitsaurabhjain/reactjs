@@ -391,6 +391,31 @@ import './App.css' // This is used when we need cascading also.
 ```js
 npm install style-jsx --save
 ```
+## Code-Splitting
+> To avoid winding up with a large bundle, it’s good to start “splitting” your bundle.
+Code-splitting your app can help you “lazy-load” just the things that are currently needed by the user.
+**The best way to introduce code-splitting into your app is through the dynamic `import()`**
+
+```js
+// install below to use dynamic import since dynamic import is not a part of ECAScript standard.
+npm install babel-plugin-syntax-dynamic-import --save-dev
+import("./math").then(math => {
+  console.log(math.add(16, 26));
+});
+```
+### React Loadable
+[React Loadable](https://github.com/thejameskyle/react-loadable) wraps dynamic imports in a nice, React-friendly API for introducing code splitting into your app at a given component.
+```js
+// npm install react-loadable --save
+import Loadable from 'react-loadable';
+const LoadableOtherComponent = Loadable({
+  loader: () => import('./OtherComponent'),
+  loading: () => <div>Loading...</div>,
+});
+const MyComponent = () => (
+  <LoadableOtherComponent/>
+);
+``` 
 
 ### Composition vs inharitance
 * we use React in thousands of components, and we haven’t found any use cases where we would recommend creating component inheritance hierarchies.
