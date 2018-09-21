@@ -394,6 +394,10 @@ npm install style-jsx --save
 ## Code-Splitting
 > To avoid winding up with a large bundle, it’s good to start “splitting” your bundle.
 Code-splitting your app can help you “lazy-load” just the things that are currently needed by the user.
+We can use two below approach to split our code.
+1. Router Based.
+2. Component Based
+
 **The best way to introduce code-splitting into your app is through the dynamic `import()`**
 
 ```js
